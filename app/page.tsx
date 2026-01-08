@@ -226,21 +226,37 @@ export default function VotingPage() {
       {/* Floating Action Bar */}
       <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 w-[90%] max-w-2xl glass p-4 rounded-2xl flex items-center justify-between shadow-2xl z-50 border border-indigo-500/20">
         <div className="text-sm text-slate-300">
-          {lastSaved ? `${lastSaved} に保存しました` : "未保存の変更があります"}
+          {lastSaved ? `${lastSaved} に保存しました` : "変更を保存してから提出してください"}
         </div>
-        <button
-          onClick={handleSave}
-          disabled={saving}
-          className={`
-            px-8 py-3 rounded-xl font-bold text-white transition-all transform
-            ${saving
-              ? "bg-slate-600 cursor-wait"
-              : "bg-indigo-600 hover:bg-indigo-500 hover:scale-105 active:scale-95 shadow-lg shadow-indigo-500/30"
-            }
-          `}
-        >
-          {saving ? "保存中..." : "ランキングを保存"}
-        </button>
+        <div className="flex gap-3">
+          <button
+            onClick={handleSave}
+            disabled={saving}
+            className={`
+              px-6 py-3 rounded-xl font-bold text-white transition-all transform
+              ${saving
+                ? "bg-slate-600 cursor-wait"
+                : "bg-slate-700 hover:bg-slate-600 hover:scale-105 active:scale-95"
+              }
+            `}
+          >
+            {saving ? "保存中..." : "保存"}
+          </button>
+          <button
+            onClick={() => {
+              if (!lastSaved) {
+                alert("先にランキングを保存してください");
+                return;
+              }
+              if (confirm("採点を提出しますか？\n\n提出後も内容は変更できます。")) {
+                alert("採点を提出しました！\n\n管理者に結果が通知されます。");
+              }
+            }}
+            className="px-6 py-3 rounded-xl font-bold text-white transition-all transform bg-emerald-600 hover:bg-emerald-500 hover:scale-105 active:scale-95 shadow-lg shadow-emerald-500/30"
+          >
+            ✅ 採点を提出
+          </button>
+        </div>
       </div>
 
       {/* Password Change Modal */}
@@ -311,8 +327,8 @@ export default function VotingPage() {
                   type="submit"
                   disabled={changingPassword}
                   className={`flex-1 py-3 rounded-xl font-bold text-white transition-all ${changingPassword
-                      ? "bg-slate-600 cursor-wait"
-                      : "bg-violet-600 hover:bg-violet-500 shadow-lg shadow-violet-500/30"
+                    ? "bg-slate-600 cursor-wait"
+                    : "bg-violet-600 hover:bg-violet-500 shadow-lg shadow-violet-500/30"
                     }`}
                 >
                   {changingPassword ? "変更中..." : "変更する"}

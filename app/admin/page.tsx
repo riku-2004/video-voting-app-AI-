@@ -261,8 +261,8 @@ export default function AdminPage() {
                 <button
                     onClick={() => setActiveForm(activeForm === 'video' ? 'none' : 'video')}
                     className={`px-6 py-3 font-bold rounded-xl transition-all transform hover:scale-105 active:scale-95 shadow-lg ${activeForm === 'video'
-                            ? 'bg-slate-600 text-white'
-                            : 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-indigo-500/30'
+                        ? 'bg-slate-600 text-white'
+                        : 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-indigo-500/30'
                         }`}
                 >
                     {activeForm === 'video' ? "キャンセル" : "🎬 動画を追加"}
@@ -270,8 +270,8 @@ export default function AdminPage() {
                 <button
                     onClick={() => setActiveForm(activeForm === 'user' ? 'none' : 'user')}
                     className={`px-6 py-3 font-bold rounded-xl transition-all transform hover:scale-105 active:scale-95 shadow-lg ${activeForm === 'user'
-                            ? 'bg-slate-600 text-white'
-                            : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-emerald-500/30'
+                        ? 'bg-slate-600 text-white'
+                        : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-emerald-500/30'
                         }`}
                 >
                     {activeForm === 'user' ? "キャンセル" : "👤 ユーザーを追加"}
@@ -279,11 +279,17 @@ export default function AdminPage() {
                 <button
                     onClick={() => setActiveForm(activeForm === 'password' ? 'none' : 'password')}
                     className={`px-6 py-3 font-bold rounded-xl transition-all transform hover:scale-105 active:scale-95 shadow-lg ${activeForm === 'password'
-                            ? 'bg-slate-600 text-white'
-                            : 'bg-violet-600 hover:bg-violet-500 text-white shadow-violet-500/30'
+                        ? 'bg-slate-600 text-white'
+                        : 'bg-violet-600 hover:bg-violet-500 text-white shadow-violet-500/30'
                         }`}
                 >
                     {activeForm === 'password' ? "キャンセル" : "🔑 パスワード変更"}
+                </button>
+                <button
+                    onClick={() => router.push('/admin/results')}
+                    className="px-6 py-3 font-bold rounded-xl transition-all transform hover:scale-105 active:scale-95 shadow-lg bg-amber-600 hover:bg-amber-500 text-white shadow-amber-500/30"
+                >
+                    📊 集計結果
                 </button>
             </div>
 
@@ -341,8 +347,8 @@ export default function AdminPage() {
                                 type="submit"
                                 disabled={saving}
                                 className={`w-full py-3 rounded-xl font-bold text-white transition-all ${saving
-                                        ? "bg-slate-600 cursor-wait"
-                                        : "bg-emerald-600 hover:bg-emerald-500 shadow-lg shadow-emerald-500/30"
+                                    ? "bg-slate-600 cursor-wait"
+                                    : "bg-emerald-600 hover:bg-emerald-500 shadow-lg shadow-emerald-500/30"
                                     }`}
                             >
                                 {saving ? "追加中..." : "ユーザーを追加"}
@@ -410,8 +416,8 @@ export default function AdminPage() {
                                 type="submit"
                                 disabled={saving}
                                 className={`w-full py-3 rounded-xl font-bold text-white transition-all ${saving
-                                        ? "bg-slate-600 cursor-wait"
-                                        : "bg-violet-600 hover:bg-violet-500 shadow-lg shadow-violet-500/30"
+                                    ? "bg-slate-600 cursor-wait"
+                                    : "bg-violet-600 hover:bg-violet-500 shadow-lg shadow-violet-500/30"
                                     }`}
                             >
                                 {saving ? "変更中..." : "パスワードを変更"}
@@ -496,8 +502,8 @@ export default function AdminPage() {
                                             type="button"
                                             onClick={() => handleCastToggle(u.id)}
                                             className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${formData.castUserIds.includes(u.id)
-                                                    ? "bg-indigo-600 text-white"
-                                                    : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+                                                ? "bg-indigo-600 text-white"
+                                                : "bg-slate-800 text-slate-300 hover:bg-slate-700"
                                                 }`}
                                         >
                                             {u.name}
@@ -511,8 +517,8 @@ export default function AdminPage() {
                                 type="submit"
                                 disabled={saving}
                                 className={`w-full py-3 rounded-xl font-bold text-white transition-all ${saving
-                                        ? "bg-slate-600 cursor-wait"
-                                        : "bg-indigo-600 hover:bg-indigo-500 shadow-lg shadow-indigo-500/30"
+                                    ? "bg-slate-600 cursor-wait"
+                                    : "bg-indigo-600 hover:bg-indigo-500 shadow-lg shadow-indigo-500/30"
                                     }`}
                             >
                                 {saving ? "保存中..." : "動画を追加"}
@@ -538,8 +544,8 @@ export default function AdminPage() {
                                     <span className="text-white font-medium">{u.name}</span>
                                     <span
                                         className={`px-2 py-0.5 rounded-full text-xs font-medium ${u.role === "admin"
-                                                ? "bg-violet-500/20 text-violet-300"
-                                                : "bg-slate-600/50 text-slate-300"
+                                            ? "bg-violet-500/20 text-violet-300"
+                                            : "bg-slate-600/50 text-slate-300"
                                             }`}
                                     >
                                         {u.role === "admin" ? "管理者" : "一般"}
@@ -600,8 +606,8 @@ export default function AdminPage() {
                                     </div>
                                     <span
                                         className={`px-3 py-1 rounded-full text-xs font-medium ml-4 ${video.isActive
-                                                ? "bg-green-500/20 text-green-300"
-                                                : "bg-red-500/20 text-red-300"
+                                            ? "bg-green-500/20 text-green-300"
+                                            : "bg-red-500/20 text-red-300"
                                             }`}
                                     >
                                         {video.isActive ? "有効" : "無効"}
