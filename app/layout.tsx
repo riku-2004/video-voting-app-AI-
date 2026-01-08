@@ -8,7 +8,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "動画投票システム",
+  title: "あじわいオーディション用採点サイト",
   description: "動画をランキング付けする投票アプリ",
 };
 

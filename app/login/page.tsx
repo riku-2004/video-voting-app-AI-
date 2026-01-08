@@ -44,7 +44,7 @@ export default function LoginPage() {
         <div className="min-h-screen flex items-center justify-center p-4">
             <div className="glass p-8 rounded-2xl w-full max-w-md shadow-2xl border border-white/10">
                 <h1 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
-                    動画投票システム
+                    あじわいオーディション用採点サイト
                 </h1>
 
                 <form onSubmit={handleLogin} className="space-y-6">
