@@ -52,6 +52,7 @@ model Vote {
   userId      String
   user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   submittedAt DateTime   @default(now())
+  isSubmitted Boolean    @default(false)
 
   items       VoteItem[]
 }

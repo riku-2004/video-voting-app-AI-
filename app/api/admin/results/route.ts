@@ -31,6 +31,7 @@ export async function GET() {
     // Get all votes, comments, videos, and users
     const [votes, comments, videos, users] = await Promise.all([
         prisma.vote.findMany({
+            where: { isSubmitted: true },
             include: { items: true, user: true }
         }),
         prisma.comment.findMany({

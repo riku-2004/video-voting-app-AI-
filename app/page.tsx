@@ -243,13 +243,23 @@ export default function VotingPage() {
             {saving ? "保存中..." : "保存"}
           </button>
           <button
-            onClick={() => {
+            onClick={async () => {
               if (!lastSaved) {
                 alert("先にランキングを保存してください");
                 return;
               }
               if (confirm("採点を提出しますか？\n\n提出後も内容は変更できます。")) {
-                alert("採点を提出しました！\n\n管理者に結果が通知されます。");
+                try {
+                  const res = await fetch("/api/vote/submit", { method: "POST" });
+                  if (res.ok) {
+                    alert("採点を提出しました！\n\n管理者に結果が通知されます。");
+                  } else {
+                    const data = await res.json();
+                    alert(data.error || "提出に失敗しました");
+                  }
+                } catch (err) {
+                  alert("エラーが発生しました");
+                }
               }
             }}
             className="px-6 py-3 rounded-xl font-bold text-white transition-all transform bg-emerald-600 hover:bg-emerald-500 hover:scale-105 active:scale-95 shadow-lg shadow-emerald-500/30"
